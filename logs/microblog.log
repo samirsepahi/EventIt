@@ -56,3 +56,5 @@ jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endfor'. Jinja w
 2023-03-02 13:31:40,314 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/microblog/app/__init__.py:43]
 2023-03-02 13:32:51,483 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/microblog/app/__init__.py:43]
 2023-03-02 13:48:45,797 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/microblog/app/__init__.py:45]
+2023-04-04 20:55:15,439 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
+2023-04-04 21:00:20,804 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
