@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Snowman Guesses</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.guess1.label }}<br>
+            {{ form.guess1(size=32) }}<br>
+            {% for error in form.guess1.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.guess2.label }}<br>
+            {{ form.guess2(size=32) }}<br>
+            {% for error in form.guess2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.guess3.label }}<br>
+            {{ form.guess3(size=32) }}<br>
+            {% for error in form.guess3.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

@@ -1,0 +1,59 @@
+body {
+    background: #62b6e3;
+    font-family: 'Montserrat', sans-serif;
+  }
+.opening_option_button{
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.chessboard {
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    border: 25px solid #333333;
+    
+}
+.hidden {
+  display: none;
+}
+.black {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #999999;
+      font-size:50px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+}
+.white {
+    float: left;
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff;
+    font-size:50px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+}
+.selected {
+  background-color: "yellow";
+}
+.oldSelected {
+  background-color: "red";
+}
+.possiblePoints {
+  text-align:center;
+}
+.dot {
+  height: 60px;
+  width: 60px;
+  background-color: "grey";
+}
