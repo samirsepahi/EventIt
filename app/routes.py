@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, SnowmanForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm
+from app.forms import LoginForm, SnowmanForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, EventForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post
 from werkzeug.urls import url_parse
@@ -37,6 +37,15 @@ def explore():
         if posts.has_prev else None
     return render_template("index.html", title='Explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
+@app.route('/create_event')
+def create_event():
+    form = EventForm()
+    if form.validate_on_submit():
+        event_name = User.query.filter_by(eventName=form.eventName.data, eventDate=form.eventDate.data)
+        if event_name is None:
+            flash('Invalid event name')
+            return redirect(url_for('create_event'), methods=['GET', 'POST'])
+    return render_template('create_event.html', title='Create Event', form=form)
 @app.route('/songs')
 def songs():
     user = {'username': 'Samuel'}
