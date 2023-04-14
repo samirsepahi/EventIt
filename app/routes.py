@@ -37,14 +37,13 @@ def explore():
         if posts.has_prev else None
     return render_template("index.html", title='Explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
-@app.route('/create_event')
+@app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
     form = EventForm()
     if form.validate_on_submit():
-        event_name = User.query.filter_by(eventName=form.eventName.data, eventDate=form.eventDate.data)
-        if event_name is None:
-            flash('Invalid event name')
-            return redirect(url_for('create_event'), methods=['GET', 'POST'])
+        post = Post(body=form.eventName.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
     return render_template('create_event.html', title='Create Event', form=form)
 @app.route('/songs')
 def songs():

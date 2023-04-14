@@ -1,4 +1,4 @@
-2023-04-12 12:01:40,965 ERROR: Exception on / [GET] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
+2023-04-13 21:15:38,069 ERROR: Exception on /create_event [GET] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
 Traceback (most recent call last):
   File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,50 +12,20 @@ Traceback (most recent call last):
   File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 27, in index
-    return render_template('index.html', title='Home', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 147, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/templating.py", line 130, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/jinja2/environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/templates/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block 'html'
-    {% block body -%}
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/templates/base.html", line 23, in block 'navbar'
-    <li><a href="{{ url_for('create_event') }}">Create Event</a></li>
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2031, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2020, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/werkzeug/routing/map.py", line 917, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'create_event'. Did you mean 'register' instead?
-2023-04-12 12:03:52,289 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
-2023-04-12 12:03:55,562 ERROR: Exception on /create_event [GET] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
+  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 51, in create_event
+    return render_template('create_event.html', title='Create Event', form=form, posts=posts.items)
+                                                                                       ^^^^^
+NameError: name 'posts' is not defined
+2023-04-13 21:16:10,281 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
+2023-04-13 21:16:21,730 ERROR: Exception on /create_event [POST] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
+Traceback (most recent call last):
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2120, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'User' has no attribute 'eventName'
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -69,12 +39,28 @@ Traceback (most recent call last):
   File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 42, in create_event
-    form = EventForm()
-           ^^^^^^^^^
-NameError: name 'EventForm' is not defined
-2023-04-12 12:05:51,275 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
-2023-04-12 12:05:53,618 ERROR: Exception on /create_event [GET] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
+  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 44, in create_event
+    event_name = User.query.filter_by(eventName=form.eventName.data, eventDate=form.eventDate.data)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1998, in filter_by
+    clauses = [
+              ^
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1999, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2122, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "user" has no property "eventName"
+2023-04-13 21:20:16,446 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
+2023-04-13 21:20:26,814 ERROR: Exception on /create_event [POST] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
+Traceback (most recent call last):
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2120, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+           ^^^^^^^^^^^^^^^^
+AttributeError: type object 'User' has no attribute 'eventName'
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2525, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,30 +74,16 @@ Traceback (most recent call last):
   File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 42, in create_event
-    form = EventForm()
-           ^^^^^^^^^
-NameError: name 'EventForm' is not defined
-2023-04-12 12:05:55,283 ERROR: Exception on /create_event [GET] [in /Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py:1741]
-Traceback (most recent call last):
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 2525, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1822, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1820, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1796, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 42, in create_event
-    form = EventForm()
-           ^^^^^^^^^
-NameError: name 'EventForm' is not defined
-2023-04-12 12:08:36,450 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
-2023-04-12 12:13:14,744 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
-2023-04-12 12:14:01,628 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
-2023-04-12 12:15:03,623 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
-2023-04-12 13:17:35,333 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
+  File "/Users/smirsepahi/Documents/Code/EventIt/app/routes.py", line 44, in create_event
+    event_name = User.query.filter_by(eventName=form.eventName.data, eventDate=form.eventDate.data)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1998, in filter_by
+    clauses = [
+              ^
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 1999, in <listcomp>
+    _entity_namespace_key(from_entity, key) == value
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/smirsepahi/Documents/Code/microblog/venv/lib/python3.11/site-packages/sqlalchemy/sql/base.py", line 2122, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "user" has no property "eventName"
+2023-04-13 21:21:47,380 INFO: Microblog startup [in /Users/smirsepahi/Documents/Code/EventIt/app/__init__.py:45]
